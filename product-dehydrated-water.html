@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Dehydrated Water: Water, minus the water. Perfectly lightweight, never spills and lasts until the end of times. Just add water before drinking!">
+  <title>Dehydrated Water – Prep Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="shop.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="header-link logo-link" href="index.html">
+      <img src="img/prep-shop-logo.png" alt="Prep Shop" width="820" height="360">
+      <span class="header-link-text">View Products</span>
+    </a>
+    <a class="header-link basket-link" href="basket.html">
+      <img src="img/basket-icon.png" alt="" width="300" height="300">
+      <span class="header-link-text">View Basket <span class="visually-hidden">, items in basket:</span> <span class="badge" data-basket-count>0</span></span>
+    </a>
+  </header>
+  <main id="main" tabindex="-1">
+    <article class="product-detail">
+      <img class="product-detail-image" src="img/product-dehydrated-water.png" alt="Dehydrated Water" width="400" height="400">
+      <div class="product-detail-info">
+        <h1>Dehydrated Water</h1>
+        <p class="product-detail-price">$19.99</p>
+        <p>Water, minus the water. Perfectly lightweight, never spills and lasts until the end of times. Just add water before drinking!</p>
+        <button type="button" class="button" data-add-to-basket="dehydrated-water">Add to Cart</button>
+        <p id="add-status" class="status" role="status" aria-live="polite"></p>
+        <p><a href="index.html">&larr; Back to all products</a></p>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <p>Prep Shop is a demo. Nothing here is for sale, and no doomsday is scheduled (that we know of).</p>
+  </footer>
+  <noscript><p class="noscript">The basket and checkout need JavaScript to work.</p></noscript>
+</body>
+</html>

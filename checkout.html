@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Check out your Prep Shop order.">
+  <title>Checkout – Prep Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="shop.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="header-link logo-link" href="index.html">
+      <img src="img/prep-shop-logo.png" alt="Prep Shop" width="820" height="360">
+      <span class="header-link-text">View Products</span>
+    </a>
+    <a class="header-link basket-link" href="basket.html">
+      <img src="img/basket-icon.png" alt="" width="300" height="300">
+      <span class="header-link-text">View Basket <span class="visually-hidden">, items in basket:</span> <span class="badge" data-basket-count>0</span></span>
+    </a>
+  </header>
+  <main id="main" tabindex="-1">
+    <h1>Checkout</h1>
+    <div id="checkout-empty" hidden>
+      <p class="empty-message">Basket is Currently Empty</p>
+      <p><a href="index.html">Go stock up on supplies</a></p>
+    </div>
+    <section id="checkout-summary" aria-labelledby="summary-heading" hidden>
+      <h2 id="summary-heading">Order summary</h2>
+      <ul id="checkout-items" class="basket-list"></ul>
+      <p id="checkout-total" class="basket-total"></p>
+    </section>
+    <form id="checkout-form" class="checkout-form" hidden>
+      <p class="form-note">This is a demo: your details are never sent or stored anywhere.</p>
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" name="name" type="text" autocomplete="name" maxlength="100" required>
+      </div>
+      <div class="field">
+        <label for="address-line1">Address line 1</label>
+        <input id="address-line1" name="address-line1" type="text" autocomplete="address-line1" maxlength="200" required>
+      </div>
+      <div class="field">
+        <label for="address-line2">Address line 2</label>
+        <input id="address-line2" name="address-line2" type="text" autocomplete="address-line2" maxlength="200">
+      </div>
+      <button type="submit" class="button">Submit Order</button>
+    </form>
+  </main>
+  <footer class="site-footer">
+    <p>Prep Shop is a demo. Nothing here is for sale, and no doomsday is scheduled (that we know of).</p>
+  </footer>
+  <noscript><p class="noscript">The basket and checkout need JavaScript to work.</p></noscript>
+</body>
+</html>
