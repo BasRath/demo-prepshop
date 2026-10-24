@@ -1,0 +1,10 @@
+{
+  "id": 7,
+  "title": "Add icon",
+  "status": "todo",
+  "slug": "add-icon",
+  "url": "https://basic-scrum-board.vercel.app/api/tickets/7",
+  "createdAt": "2026-10-24T18:53:37.586Z",
+  "updatedAt": "2026-10-24T18:53:37.586Z",
+  "description": "Acceptance criteria\n1 Choose a relevant icon in line with the style of the site.\n2 Add it so that it is shown in both modern and old browsers"
+}
