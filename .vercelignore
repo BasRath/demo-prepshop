@@ -1,0 +1,8 @@
+# Development and test tooling – not part of the static site
+.github
+docs
+tests
+node_modules
+package.json
+package-lock.json
+playwright.config.js

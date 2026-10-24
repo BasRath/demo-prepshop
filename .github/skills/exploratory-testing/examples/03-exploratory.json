@@ -1,0 +1,90 @@
+{
+  "ticket": 1,
+  "sessions": [
+    {
+      "id": "S1",
+      "charter": "Explore the header story cards with widths around 720/1024/1440 px, keyboard focus, hover and reduced motion to discover overlap, clipping and cycling/pause problems",
+      "acceptanceCriteria": ["AC3", "AC4"],
+      "heuristics": ["Boundaries", "Goldilocks", "Keyboard only", "Preferences", "Interrupt"],
+      "environments": ["Chromium 720x800", "Chromium 721x800", "Chromium 1023x800", "Chromium 1024x800", "Chromium 1440x900", "reduced motion"],
+      "status": "completed",
+      "notes": [
+        "At 720 px one card is shown and fits between logo and basket.",
+        "At 1024 px three cards are shown; at 1440 px five cards are shown and nothing moves.",
+        "Cycling pauses on hover (D5) and changes cards without animation under reduced motion (D6).",
+        "Cycling did not pause while a card had keyboard focus (F1); after the fix focus pauses cycling."
+      ],
+      "evidence": [
+        "screenshots/S1-01-one-card-at-720.png",
+        "screenshots/S1-02-title-truncated-at-721.png",
+        "screenshots/S1-03-focus-lost-after-cycle.png"
+      ]
+    },
+    {
+      "id": "S2",
+      "charter": "Explore the five story pages with keyboard and the accessibility snapshot to discover navigation, content-length and tone problems",
+      "acceptanceCriteria": ["AC1", "AC2", "AC5", "AC6"],
+      "heuristics": ["Consistency", "Assistive tech", "Boundaries"],
+      "environments": ["Chromium 1440x900"],
+      "status": "completed",
+      "notes": [
+        "All five stories open from their card with Enter; h1 matches the card title.",
+        "Paragraph counts: 3, 2, 3, 3, 2 (AC2 met).",
+        "Tone is cute and tongue-in-cheek, consistent with product copy (AC1 met).",
+        "Each product is linked from at least one story: Dehydrated Water (2), Tinfoil Thinking Cap (2), Canned Optimism (2)."
+      ],
+      "evidence": []
+    },
+    {
+      "id": "S3",
+      "charter": "Explore basket and checkout with the new header on 720 and 1440 px to discover regressions caused by the shared header change",
+      "acceptanceCriteria": [],
+      "heuristics": ["Consistency", "State/persistence", "Repetition"],
+      "environments": ["Chromium 720x800", "Chromium 1440x900"],
+      "status": "completed",
+      "notes": [
+        "Basket count stays correct across pages and reloads.",
+        "Checkout and thank-you message unaffected; no console errors besides the known favicon 404."
+      ],
+      "evidence": []
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "title": "Story cards keep cycling while a card has keyboard focus",
+      "severity": "medium",
+      "status": "fixed",
+      "acceptanceCriterion": "AC4",
+      "session": "S1",
+      "steps": [
+        "Open the shop at 1024 px wide",
+        "Press Tab until the first story card has focus",
+        "Wait 10 seconds"
+      ],
+      "expected": "Cycling pauses while a card has focus (decision D5).",
+      "actual": "The focused card slides away and focus is lost.",
+      "evidence": ["screenshots/S1-03-focus-lost-after-cycle.png"],
+      "resolution": "Added focusin/focusout handlers that pause and resume the timer; retested with the same steps in S1 – focus now pauses cycling."
+    },
+    {
+      "id": "F2",
+      "title": "Long story title truncated at 721 px without a way to read it in full",
+      "severity": "low",
+      "status": "open",
+      "acceptanceCriterion": "AC3",
+      "session": "S1",
+      "steps": [
+        "Open the shop at 721 px wide",
+        "Look at the single story card"
+      ],
+      "expected": "The full story title is readable or available.",
+      "actual": "\"The Great Calendar Reset\" is shown as \"The Great Calen…\".",
+      "evidence": ["screenshots/S1-02-title-truncated-at-721.png"]
+    }
+  ],
+  "notExplored": [
+    "Firefox and WebKit – the project tests Chromium only.",
+    "Screen widths below 720 px beyond a single check – story cards are out of scope there."
+  ]
+}

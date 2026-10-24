@@ -1,0 +1,63 @@
+{
+  "ticket": 1,
+  "summary": "Shoppers on wider screens see cute doomsday story cards in the header that cycle and open a story page recommending the products that help in that scenario.",
+  "acceptanceCriteria": [
+    {
+      "id": "AC1",
+      "original": "Scenario's need to be kawaii, but they do not have to be accurate.",
+      "refined": "Every story is written in the shop's cute, tongue-in-cheek anime tone; factual accuracy is not required.",
+      "risk": { "impact": "low", "likelihood": "low", "level": "low", "rationale": "Tone only; no effect on buying." },
+      "testApproach": { "automated": false, "technique": "error guessing", "reason": "Subjective content quality; reviewed during exploratory session S2." }
+    },
+    {
+      "id": "AC2",
+      "original": "Scenario's are at most 3 paragraphs.",
+      "refined": "Each story page shows between 1 and 3 paragraphs of story text.",
+      "risk": { "impact": "low", "likelihood": "low", "level": "low", "rationale": "Static content written once." },
+      "testApproach": { "automated": false, "technique": "boundary value analysis", "reason": "Static content with no input; counted once during exploratory session S2." }
+    },
+    {
+      "id": "AC3",
+      "original": "Scenariocards are visible on each viewport that has plenty of room between the logo and the basket. Show either 0, 1, 3 or 5 depending on available space.",
+      "refined": "The header shows 0 story cards below 720px wide, 1 from 720px, 3 from 1024px and 5 from 1440px, without overlapping the logo or the basket link.",
+      "risk": { "impact": "high", "likelihood": "high", "level": "high", "rationale": "New responsive logic in the shared header; overlap would hide the basket link on every page." },
+      "testApproach": { "automated": true, "technique": "boundary value analysis" }
+    },
+    {
+      "id": "AC4",
+      "original": "If less than 5 scenariocards are shown, make sure they cycle every 10 seconds.",
+      "refined": "When fewer than 5 cards are visible, the cards advance by one story every 10 seconds; with 5 cards visible nothing moves. A pause button stops cycling, and cycling pauses while a card is hovered or focused.",
+      "risk": { "impact": "medium", "likelihood": "high", "level": "high", "rationale": "Timer and state logic; failure is confusing and an accessibility issue." },
+      "testApproach": { "automated": true, "technique": "state transition + boundary value analysis (time)" }
+    },
+    {
+      "id": "AC5",
+      "original": "When you click a story card, a story page is shown. That page is centerered around a scenario.",
+      "refined": "Activating a story card (click or Enter) opens that story's page, whose main heading is the story title.",
+      "risk": { "impact": "high", "likelihood": "medium", "level": "high", "rationale": "Navigation from every page; a wrong or broken link is a dead end." },
+      "testApproach": { "automated": true, "technique": "use case" }
+    },
+    {
+      "id": "AC6",
+      "original": "Create 5 scenario's that are loosely based on popular belief, lore or legend. Incorporate the 3 products in a way so that each of the products would be beneficial for at least 1 of the scenario's.",
+      "refined": "There are exactly 5 stories based on lore or legend; every product (Dehydrated Water, Tinfoil Thinking Cap, Canned Optimism) is recommended with a link on at least one story page.",
+      "risk": { "impact": "medium", "likelihood": "medium", "level": "medium", "rationale": "Links to product pages can break; drives sales from stories." },
+      "testApproach": { "automated": true, "technique": "equivalence partitioning (one check per product)" }
+    }
+  ],
+  "decisions": [
+    { "id": "D1", "topic": "Duplicate criterion number", "decision": "Second criterion 5 becomes AC6.", "source": "derived", "evidence": "Ticket text numbers two criteria as 5.", "acceptanceCriteria": ["AC6"] },
+    { "id": "D2", "topic": "Meaning of kawaii", "decision": "Same cute anime, tongue-in-cheek tone as the existing shop copy.", "source": "derived", "evidence": "README.md 'anime-themed'; index.html title 'Kawaii Doomsday Supplies'; copilot-instructions tone rule.", "acceptanceCriteria": ["AC1"] },
+    { "id": "D3", "topic": "Card count per screen width", "decision": "0 below 720px, 1 from 720px, 3 from 1024px, 5 from 1440px.", "source": "user", "evidence": "Asked: 'AC3: at which screen widths should 0, 1, 3 and 5 story cards be shown in the header?'", "acceptanceCriteria": ["AC3"] },
+    { "id": "D4", "topic": "Cycling behaviour", "decision": "Advance by one story every 10 seconds.", "source": "user", "evidence": "Asked: 'AC4: when fewer than 5 cards are visible, what should change every 10 seconds?'", "acceptanceCriteria": ["AC4"] },
+    { "id": "D5", "topic": "Pause control", "decision": "Visible pause/play button; cycling also pauses while a card is hovered or has focus.", "source": "derived", "evidence": "WCAG 2.2.2 Pause, Stop, Hide; copilot-instructions accessibility rule.", "acceptanceCriteria": ["AC4"] },
+    { "id": "D6", "topic": "Reduced motion", "decision": "No slide animation when prefers-reduced-motion is set; cards still change.", "source": "derived", "evidence": "style.css: @media (prefers-reduced-motion: reduce).", "acceptanceCriteria": ["AC4"] },
+    { "id": "D7", "topic": "Card content", "decision": "Story title and a one-line teaser; the whole card is one link.", "source": "derived", "evidence": "Limited header space; HTML semantics for navigation.", "acceptanceCriteria": ["AC3", "AC5"] },
+    { "id": "D8", "topic": "Story page technology", "decision": "One static page per story (story-<slug>.html) using the product page skeleton.", "source": "derived", "evidence": "Static site without build step; strict CSP (copilot-instructions).", "acceptanceCriteria": ["AC5"] },
+    { "id": "D9", "topic": "Story page content", "decision": "Story title as h1, story text, then links to the products that help.", "source": "derived", "evidence": "AC6 requires products to be beneficial; product pages exist.", "acceptanceCriteria": ["AC5", "AC6"] },
+    { "id": "D10", "topic": "Choice of legends", "decision": "Ragnarök, The Kraken's Bath Day, The Mind-Ray Mothership, The Great Calendar Reset, The Moon Catches a Cold.", "source": "derived", "evidence": "Creative content without behavioural impact, constrained by AC1, AC2 and AC6.", "acceptanceCriteria": ["AC6"] },
+    { "id": "D11", "topic": "Pages with cards", "decision": "Cards appear in the header on every page.", "source": "derived", "evidence": "All pages share the same site-header markup.", "acceptanceCriteria": ["AC3"] }
+  ],
+  "affectedAreas": ["All *.html pages (header)", "README.md", "shop.js", "story-*.html (new)", "style.css"],
+  "outOfScope": ["Story cards on screens narrower than 720px", "Sharing or commenting on stories", "Changes to products, basket or checkout"]
+}

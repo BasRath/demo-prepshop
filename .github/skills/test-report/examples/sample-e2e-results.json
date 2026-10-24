@@ -1,0 +1,361 @@
+{
+  "suites": [
+    {
+      "title": "tests/e2e/features/baseline/checkout.feature.spec.js",
+      "file": "tests/e2e/features/baseline/checkout.feature.spec.js",
+      "suites": [
+        {
+          "title": "Checkout",
+          "file": "tests/e2e/features/baseline/checkout.feature.spec.js",
+          "line": 4,
+          "specs": [
+            {
+              "title": "Placing an order with only the required details",
+              "tags": [
+                "baseline",
+                "risk-high"
+              ],
+              "line": 6,
+              "tests": [
+                {
+                  "projectName": "desktop-chromium",
+                  "status": "expected"
+                }
+              ]
+            },
+            {
+              "title": "Checkout is not possible with an empty basket",
+              "tags": [
+                "baseline",
+                "risk-medium"
+              ],
+              "line": 38,
+              "tests": [
+                {
+                  "projectName": "desktop-chromium",
+                  "status": "expected"
+                }
+              ]
+            }
+          ],
+          "suites": [
+            {
+              "title": "An order is not placed when \"<missing field>\" is empty",
+              "file": "tests/e2e/features/baseline/checkout.feature.spec.js",
+              "line": 16,
+              "specs": [
+                {
+                  "title": "An order is not placed when \"Name\" is empty",
+                  "tags": [
+                    "baseline",
+                    "risk-high"
+                  ],
+                  "line": 18,
+                  "tests": [
+                    {
+                      "projectName": "desktop-chromium",
+                      "status": "expected"
+                    }
+                  ]
+                },
+                {
+                  "title": "An order is not placed when \"Address line 1\" is empty",
+                  "tags": [
+                    "baseline",
+                    "risk-high"
+                  ],
+                  "line": 27,
+                  "tests": [
+                    {
+                      "projectName": "desktop-chromium",
+                      "status": "expected"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests/e2e/features/baseline/shopping-basket.feature.spec.js",
+      "file": "tests/e2e/features/baseline/shopping-basket.feature.spec.js",
+      "suites": [
+        {
+          "title": "Shopping basket",
+          "file": "tests/e2e/features/baseline/shopping-basket.feature.spec.js",
+          "line": 4,
+          "specs": [
+            {
+              "title": "The basket shows the right products, count and total",
+              "tags": [
+                "baseline",
+                "risk-high"
+              ],
+              "line": 6,
+              "tests": [
+                {
+                  "projectName": "desktop-chromium",
+                  "status": "expected"
+                }
+              ]
+            },
+            {
+              "title": "Removing one product keeps the rest of the basket",
+              "tags": [
+                "baseline",
+                "risk-medium"
+              ],
+              "line": 33,
+              "tests": [
+                {
+                  "projectName": "desktop-chromium",
+                  "status": "expected"
+                }
+              ]
+            },
+            {
+              "title": "Clearing the basket empties it and blocks checkout",
+              "tags": [
+                "baseline",
+                "risk-medium"
+              ],
+              "line": 42,
+              "tests": [
+                {
+                  "projectName": "desktop-chromium",
+                  "status": "expected"
+                }
+              ]
+            }
+          ],
+          "suites": [
+            {
+              "title": "Adding one more when the basket already holds <before> (maximum is 99)",
+              "file": "tests/e2e/features/baseline/shopping-basket.feature.spec.js",
+              "line": 17,
+              "specs": [
+                {
+                  "title": "Adding one more when the basket already holds 98 (maximum is 99)",
+                  "tags": [
+                    "baseline",
+                    "risk-medium"
+                  ],
+                  "line": 19,
+                  "tests": [
+                    {
+                      "projectName": "desktop-chromium",
+                      "status": "expected"
+                    }
+                  ]
+                },
+                {
+                  "title": "Adding one more when the basket already holds 99 (maximum is 99)",
+                  "tags": [
+                    "baseline",
+                    "risk-medium"
+                  ],
+                  "line": 25,
+                  "tests": [
+                    {
+                      "projectName": "desktop-chromium",
+                      "status": "expected"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "tests/e2e/features/tickets/ticket-1-create-kawaii-doomsday-stories.feature.spec.js",
+      "file": "tests/e2e/features/tickets/ticket-1-create-kawaii-doomsday-stories.feature.spec.js",
+      "suites": [
+        {
+          "title": "Kawaii doomsday stories",
+          "file": "tests/e2e/features/tickets/ticket-1-create-kawaii-doomsday-stories.feature.spec.js",
+          "line": 4,
+          "specs": [
+            {
+              "title": "The stories move on by one after 10 seconds",
+              "tags": [
+                "ticket-1",
+                "AC4",
+                "risk-high"
+              ],
+              "line": 52,
+              "tests": [
+                {
+                  "projectName": "desktop-chromium",
+                  "status": "expected"
+                }
+              ]
+            },
+            {
+              "title": "Pausing the stories keeps them in place",
+              "tags": [
+                "ticket-1",
+                "AC4",
+                "risk-high"
+              ],
+              "line": 62,
+              "tests": [
+                {
+                  "projectName": "desktop-chromium",
+                  "status": "expected"
+                }
+              ]
+            },
+            {
+              "title": "With room for all five stories nothing moves",
+              "tags": [
+                "ticket-1",
+                "AC4",
+                "risk-medium"
+              ],
+              "line": 70,
+              "tests": [
+                {
+                  "projectName": "desktop-chromium",
+                  "status": "expected"
+                }
+              ]
+            },
+            {
+              "title": "Opening a story from its card",
+              "tags": [
+                "ticket-1",
+                "AC5",
+                "risk-high"
+              ],
+              "line": 77,
+              "tests": [
+                {
+                  "projectName": "desktop-chromium",
+                  "status": "expected"
+                }
+              ]
+            },
+            {
+              "title": "Every product is recommended by at least one of the five stories",
+              "tags": [
+                "ticket-1",
+                "AC6",
+                "risk-medium"
+              ],
+              "line": 84,
+              "tests": [
+                {
+                  "projectName": "desktop-chromium",
+                  "status": "expected"
+                }
+              ]
+            }
+          ],
+          "suites": [
+            {
+              "title": "Number of story cards on a <width> pixel wide screen is <cards>",
+              "file": "tests/e2e/features/tickets/ticket-1-create-kawaii-doomsday-stories.feature.spec.js",
+              "line": 6,
+              "specs": [
+                {
+                  "title": "Number of story cards on a 719 pixel wide screen is 0",
+                  "tags": [
+                    "ticket-1",
+                    "AC3",
+                    "risk-high"
+                  ],
+                  "line": 8,
+                  "tests": [
+                    {
+                      "projectName": "desktop-chromium",
+                      "status": "expected"
+                    }
+                  ]
+                },
+                {
+                  "title": "Number of story cards on a 720 pixel wide screen is 1",
+                  "tags": [
+                    "ticket-1",
+                    "AC3",
+                    "risk-high"
+                  ],
+                  "line": 15,
+                  "tests": [
+                    {
+                      "projectName": "desktop-chromium",
+                      "status": "expected"
+                    }
+                  ]
+                },
+                {
+                  "title": "Number of story cards on a 1023 pixel wide screen is 1",
+                  "tags": [
+                    "ticket-1",
+                    "AC3",
+                    "risk-high"
+                  ],
+                  "line": 22,
+                  "tests": [
+                    {
+                      "projectName": "desktop-chromium",
+                      "status": "expected"
+                    }
+                  ]
+                },
+                {
+                  "title": "Number of story cards on a 1024 pixel wide screen is 3",
+                  "tags": [
+                    "ticket-1",
+                    "AC3",
+                    "risk-high"
+                  ],
+                  "line": 29,
+                  "tests": [
+                    {
+                      "projectName": "desktop-chromium",
+                      "status": "expected"
+                    }
+                  ]
+                },
+                {
+                  "title": "Number of story cards on a 1439 pixel wide screen is 3",
+                  "tags": [
+                    "ticket-1",
+                    "AC3",
+                    "risk-high"
+                  ],
+                  "line": 36,
+                  "tests": [
+                    {
+                      "projectName": "desktop-chromium",
+                      "status": "expected"
+                    }
+                  ]
+                },
+                {
+                  "title": "Number of story cards on a 1440 pixel wide screen is 5",
+                  "tags": [
+                    "ticket-1",
+                    "AC3",
+                    "risk-high"
+                  ],
+                  "line": 43,
+                  "tests": [
+                    {
+                      "projectName": "desktop-chromium",
+                      "status": "expected"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
