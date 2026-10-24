@@ -1,0 +1,88 @@
+{
+  "ticket": 5,
+  "sessions": [
+    {
+      "id": "S1",
+      "charter": "Explore the dark appearance across product, basket and checkout pages with preference, consistency, keyboard and assistive-technology checks to discover unreadable surfaces or regressions.",
+      "acceptanceCriteria": [
+        "AC1",
+        "AC2"
+      ],
+      "heuristics": [
+        "Preferences",
+        "Consistency",
+        "Keyboard only",
+        "Assistive tech"
+      ],
+      "environments": [
+        "Chromium 1280x720, dark color scheme"
+      ],
+      "status": "completed",
+      "notes": [
+        "Product listing, product details, basket and checkout all used the dark page, header, card and form colors.",
+        "Keyboard focus reached the skip link, and the accessibility snapshot retained the expected page headings, links, controls and status messages.",
+        "Adding Tinfoil Thinking Cap updated the basket count and live status; basket total was $12.50; checkout completed and cleared the basket.",
+        "The first dark basket view showed low-contrast secondary button labels. After the fix, the labels were light on the dark button surfaces.",
+        "No browser console errors were reported on the visited pages."
+      ],
+      "evidence": [
+        "screenshots/S1-01-dark-home.png",
+        "screenshots/S1-02-dark-product.png",
+        "screenshots/S1-03-dark-basket.png",
+        "screenshots/S1-04-dark-checkout.png",
+        "screenshots/S1-05-dark-basket-controls-fixed.png"
+      ]
+    },
+    {
+      "id": "S2",
+      "charter": "Explore the unchanged light appearance and mobile layout with light and dark device preferences to discover unintended light-mode or narrow-screen changes.",
+      "acceptanceCriteria": [
+        "AC2"
+      ],
+      "heuristics": [
+        "Goldilocks",
+        "Preferences",
+        "Interrupt"
+      ],
+      "environments": [
+        "Chromium 320x800, light color scheme",
+        "Chromium 320x800, dark color scheme"
+      ],
+      "status": "completed",
+      "notes": [
+        "At 320px wide, the product listing remained within the viewport without visible horizontal overflow.",
+        "The light preference retained the original pink-blue header gradient, light page background and white product cards.",
+        "Changing the emulated preference from light to dark updated the page colors without reloading."
+      ],
+      "evidence": [
+        "screenshots/S2-01-light-mobile.png",
+        "screenshots/S2-02-dark-mobile.png"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "F1",
+      "title": "Secondary basket button labels lacked contrast in dark appearance",
+      "severity": "medium",
+      "status": "fixed",
+      "acceptanceCriterion": "AC1",
+      "session": "S1",
+      "steps": [
+        "Set the device color scheme to dark.",
+        "Add a product and open the basket.",
+        "Inspect the Remove and Clear All Products controls."
+      ],
+      "expected": "Secondary button labels remain readable against their dark surfaces.",
+      "actual": "The secondary button text used the dark primary-button text color and was difficult to read against the dark surface.",
+      "evidence": [
+        "screenshots/S1-03-dark-basket.png",
+        "screenshots/S1-05-dark-basket-controls-fixed.png"
+      ],
+      "resolution": "Set secondary button text to the theme ink color, which is light in dark mode and unchanged in light mode. Retested with a targeted E2E assertion and a Playwright CLI basket check; the labels are readable and the page reports no console errors."
+    }
+  ],
+  "notExplored": [
+    "Non-Chromium browser rendering and native scrollbar appearance."
+  ]
+}

@@ -20,6 +20,7 @@ kept in your browser's `localStorage` and the checkout form data is never sent o
 - Checkout form (name + two address lines) that shows "Thank you for your order" and
   clears the basket on submit.
 - Responsive layout (mobile first, CSS grid/flexbox).
+- Dark appearance automatically follows the device color-scheme preference; the existing light appearance remains the default.
 - Accessibility: semantic HTML, skip link, labelled form fields, alt text, visible focus
   styles, live regions for status messages and reduced-motion support.
 - Security: strict Content Security Policy (no inline scripts/styles, `form-action 'none'`),
