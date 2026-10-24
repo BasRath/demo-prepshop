@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Your Prep Shop basket.">
+  <title>Basket – Prep Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="shop.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="header-link logo-link" href="index.html">
+      <img src="img/prep-shop-logo.png" alt="Prep Shop" width="820" height="360">
+      <span class="header-link-text">View Products</span>
+    </a>
+    <a class="header-link basket-link" href="basket.html">
+      <img src="img/basket-icon.png" alt="" width="300" height="300">
+      <span class="header-link-text">View Basket <span class="visually-hidden">, items in basket:</span> <span class="badge" data-basket-count>0</span></span>
+    </a>
+  </header>
+  <main id="main" tabindex="-1">
+    <h1>Your Basket</h1>
+    <p id="basket-empty" class="empty-message">Basket is Currently Empty</p>
+    <ul id="basket-items" class="basket-list" hidden></ul>
+    <p id="basket-total" class="basket-total" hidden></p>
+    <p id="basket-status" class="status" role="status" aria-live="polite"></p>
+    <div class="actions">
+      <button type="button" id="clear-basket" class="button button-secondary">Clear All Products</button>
+      <a id="proceed-checkout" class="button" href="checkout.html">Proceed to Checkout</a>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <p>Prep Shop is a demo. Nothing here is for sale, and no doomsday is scheduled (that we know of).</p>
+  </footer>
+  <noscript><p class="noscript">The basket and checkout need JavaScript to work.</p></noscript>
+</body>
+</html>

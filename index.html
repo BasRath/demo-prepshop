@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="A tongue-in-cheek demo webshop for doomsday preppers.">
+  <title>Prep Shop – Kawaii Doomsday Supplies</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="shop.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <a class="header-link logo-link" href="index.html">
+      <img src="img/prep-shop-logo.png" alt="Prep Shop" width="820" height="360">
+      <span class="header-link-text">View Products</span>
+    </a>
+    <a class="header-link basket-link" href="basket.html">
+      <img src="img/basket-icon.png" alt="" width="300" height="300">
+      <span class="header-link-text">View Basket <span class="visually-hidden">, items in basket:</span> <span class="badge" data-basket-count>0</span></span>
+    </a>
+  </header>
+  <main id="main" tabindex="-1">
+    <h1>Kawaii Doomsday Supplies</h1>
+    <p class="intro">Everything you need for the end of the world, now in extra cute.</p>
+    <h2 class="visually-hidden">Products</h2>
+    <ul class="product-grid">
+      <li class="product-card">
+        <a class="product-card-link" href="product-dehydrated-water.html">
+          <img src="img/product-dehydrated-water.png" alt="" width="400" height="400">
+          <h3 class="product-card-name">Dehydrated Water</h3>
+          <p class="product-card-price">$19.99</p>
+        </a>
+      </li>
+      <li class="product-card">
+        <a class="product-card-link" href="product-tinfoil-cap.html">
+          <img src="img/product-tinfoil-cap.png" alt="" width="400" height="400">
+          <h3 class="product-card-name">Tinfoil Thinking Cap</h3>
+          <p class="product-card-price">$12.50</p>
+        </a>
+      </li>
+      <li class="product-card">
+        <a class="product-card-link" href="product-canned-optimism.html">
+          <img src="img/product-canned-optimism.png" alt="" width="400" height="400">
+          <h3 class="product-card-name">Canned Optimism</h3>
+          <p class="product-card-price">$7.77</p>
+        </a>
+      </li>
+    </ul>
+  </main>
+  <footer class="site-footer">
+    <p>Prep Shop is a demo. Nothing here is for sale, and no doomsday is scheduled (that we know of).</p>
+  </footer>
+  <noscript><p class="noscript">The basket and checkout need JavaScript to work.</p></noscript>
+</body>
+</html>
