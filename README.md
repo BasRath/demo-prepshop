@@ -15,6 +15,7 @@ kept in your browser's `localStorage` and the checkout form data is never sent o
 ## Features
 
 - Product listing, product detail pages, basket and checkout.
+- Prep Shop browser icon in modern PNG and legacy ICO formats.
 - Basket with item count, remove, "Clear All Products" and "Proceed to Checkout".
 - Checkout form (name + two address lines) that shows "Thank you for your order" and
   clears the basket on submit.
@@ -34,9 +35,11 @@ kept in your browser's `localStorage` and the checkout form data is never sent o
 ├── product-*.html                  # Individual product pages
 ├── style.css                       # Main stylesheet
 ├── shop.js                         # JavaScript functionality
+├── favicon.ico                     # Legacy browser tab icon
 ├── img/                            # Image assets
 │   ├── prep-shop-logo.png
 │   ├── basket-icon.png
+│   ├── favicon.png                 # Modern browser tab icon
 │   └── product-*.png
 ├── vercel.json                     # Security headers for Vercel
 ├── .vercelignore                   # Keeps test tooling out of deployments

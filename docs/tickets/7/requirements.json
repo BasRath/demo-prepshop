@@ -1,0 +1,77 @@
+{
+  "ticket": 7,
+  "summary": "Shoppers see a Prep Shop-style favicon in modern and older browsers.",
+  "acceptanceCriteria": [
+    {
+      "id": "AC1",
+      "original": "Choose a relevant icon in line with the style of the site.",
+      "refined": "Use the existing kawaii shopping-basket illustration as the browser favicon so it matches the Prep Shop visual style.",
+      "risk": {
+        "impact": "low",
+        "likelihood": "low",
+        "level": "low",
+        "rationale": "This is a static, decorative image choice with no effect on shopping tasks."
+      },
+      "testApproach": {
+        "automated": false,
+        "technique": "error guessing",
+        "reason": "The artwork is static and decorative; review its appearance during exploratory testing."
+      }
+    },
+    {
+      "id": "AC2",
+      "original": "Add it so that it is shown in both modern and old browsers",
+      "refined": "Declare a modern PNG favicon and a legacy ICO favicon on every site page, with both local assets available so supported browsers can display the site icon.",
+      "risk": {
+        "impact": "low",
+        "likelihood": "medium",
+        "level": "low",
+        "rationale": "A missing or unsupported favicon is cosmetic, though adding metadata across all pages creates some consistency risk."
+      },
+      "testApproach": {
+        "automated": false,
+        "technique": "error guessing",
+        "reason": "Check every page's icon declarations and both local formats during exploratory testing."
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "topic": "Icon artwork",
+      "decision": "Reuse the existing kawaii shopping-basket illustration as the favicon artwork.",
+      "source": "derived",
+      "evidence": "img/basket-icon.png is the site's existing square, kawaii basket illustration and matches the shop's logo and visual style.",
+      "acceptanceCriteria": [
+        "AC1"
+      ]
+    },
+    {
+      "id": "D2",
+      "topic": "Modern and legacy formats",
+      "decision": "Provide a PNG favicon for modern browsers and a conventional ICO favicon for legacy browsers.",
+      "source": "derived",
+      "evidence": "The ticket explicitly requires modern and old browser support; PNG and ICO declarations are the established static favicon formats for those browser generations.",
+      "acceptanceCriteria": [
+        "AC2"
+      ]
+    },
+    {
+      "id": "D3",
+      "topic": "Page coverage",
+      "decision": "Declare the favicons on all six existing HTML pages.",
+      "source": "derived",
+      "evidence": "Each static page is part of the same Prep Shop site and should display the same browser identity; the site has six root-level HTML pages.",
+      "acceptanceCriteria": [
+        "AC2"
+      ]
+    }
+  ],
+  "affectedAreas": [
+    "All root-level *.html pages",
+    "favicon.ico",
+    "img/favicon.png",
+    "README.md"
+  ],
+  "outOfScope": []
+}
