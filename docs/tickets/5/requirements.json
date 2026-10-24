@@ -1,0 +1,70 @@
+{
+  "ticket": 5,
+  "summary": "Shoppers see a dark appearance when their device prefers it, while the existing light appearance and shop functionality remain unchanged.",
+  "acceptanceCriteria": [
+    {
+      "id": "AC1",
+      "original": "Add dark mode to shop",
+      "refined": "When the device prefers dark color scheme, every shop page uses a dark appearance with readable text, surfaces, links and controls.",
+      "risk": {
+        "impact": "medium",
+        "likelihood": "high",
+        "level": "high",
+        "rationale": "The new shared color treatment spans every shop page, and insufficient contrast or missed surfaces would make dark mode difficult to use."
+      },
+      "testApproach": {
+        "automated": true,
+        "technique": "decision table"
+      }
+    },
+    {
+      "id": "AC2",
+      "original": "Make no changes to light mode or any other functionality.",
+      "refined": "When the device prefers light color scheme or has no dark preference, the existing light appearance remains unchanged, and existing shop functionality continues to work.",
+      "risk": {
+        "impact": "high",
+        "likelihood": "high",
+        "level": "high",
+        "rationale": "Changes to shared styling could regress the established appearance or interfere with shopping and checkout."
+      },
+      "testApproach": {
+        "automated": true,
+        "technique": "use case"
+      }
+    }
+  ],
+  "decisions": [
+    {
+      "id": "D1",
+      "topic": "Dark mode activation",
+      "decision": "Automatically follow the device's dark color-scheme preference; do not add a manual toggle.",
+      "source": "user",
+      "evidence": "Asked how shoppers should activate dark mode; user selected automatic device preference.",
+      "acceptanceCriteria": [
+        "AC1",
+        "AC2"
+      ]
+    },
+    {
+      "id": "D2",
+      "topic": "Scope of the color treatment",
+      "decision": "Apply the dark appearance across the shared shop pages while keeping the existing default/light colors intact.",
+      "source": "derived",
+      "evidence": "Ticket AC2 requires no changes to light mode; all shop pages share style.css, and copilot-instructions.md requires preserving existing behavior and accessibility.",
+      "acceptanceCriteria": [
+        "AC1",
+        "AC2"
+      ]
+    }
+  ],
+  "affectedAreas": [
+    "style.css",
+    "README.md",
+    "tests/e2e/features/tickets/ticket-5-add-dark-mode-to-shop.feature",
+    "tests/e2e/steps/dark-mode.steps.js"
+  ],
+  "outOfScope": [
+    "A manual theme toggle or saved theme preference",
+    "Changes to shop content, products, basket, or checkout behavior"
+  ]
+}

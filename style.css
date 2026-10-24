@@ -9,6 +9,17 @@
   --muted: #5e4b6e;
   --radius: 18px;
   --focus: #2f5bff;
+  --header-start: #ffe1f0;
+  --header-end: #e3f7ff;
+  --button-hover-bg: #ffe27a;
+  --button-ink: var(--ink);
+  --button-secondary-bg: #fff;
+  --button-secondary-hover-bg: #f1eaf7;
+  --badge-bg: var(--pink-dark);
+  --field-bg: #fff;
+  --footer-bg: #ffe1f0;
+  --skip-bg: var(--ink);
+  --skip-color: #fff;
 }
 
 *,
@@ -70,8 +81,8 @@ main:focus {
   left: 1rem;
   top: -100px;
   padding: 0.5rem 1rem;
-  background: var(--ink);
-  color: #fff;
+  background: var(--skip-bg);
+  color: var(--skip-color);
   border-radius: 8px;
   z-index: 10;
 }
@@ -87,7 +98,7 @@ main:focus {
   align-items: flex-end;
   gap: 1rem;
   padding: 1rem clamp(1rem, 4vw, 3rem);
-  background: linear-gradient(135deg, #ffe1f0, #e3f7ff);
+  background: linear-gradient(135deg, var(--header-start), var(--header-end));
   border-bottom: 4px solid var(--ink);
 }
 
@@ -120,7 +131,7 @@ main:focus {
   padding: 0 0.4em;
   margin-left: 0.25em;
   border-radius: 999px;
-  background: var(--pink-dark);
+  background: var(--badge-bg);
   color: #fff;
   text-align: center;
 }
@@ -226,7 +237,7 @@ h1 {
   padding: 0.7rem 1.4rem;
   font: inherit;
   font-weight: 800;
-  color: var(--ink);
+  color: var(--button-ink);
   background: var(--yellow);
   border: 3px solid var(--ink);
   border-radius: 999px;
@@ -236,7 +247,7 @@ h1 {
 }
 
 .button:hover {
-  background: #ffe27a;
+  background: var(--button-hover-bg);
 }
 
 .button:active {
@@ -245,11 +256,12 @@ h1 {
 }
 
 .button-secondary {
-  background: #fff;
+  color: var(--ink);
+  background: var(--button-secondary-bg);
 }
 
 .button-secondary:hover {
-  background: #f1eaf7;
+  background: var(--button-secondary-hover-bg);
 }
 
 .button:disabled,
@@ -338,7 +350,7 @@ h1 {
   padding: 0.6rem 0.8rem;
   font: inherit;
   color: var(--ink);
-  background: #fff;
+  background: var(--field-bg);
   border: 2px solid var(--ink);
   border-radius: 10px;
 }
@@ -367,7 +379,28 @@ h1 {
 
 .site-footer {
   border-top: 4px solid var(--ink);
-  background: #ffe1f0;
+  background: var(--footer-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #f7edf8;
+    --bg: #1c1724;
+    --card: #302538;
+    --pink-dark: #ff9bc6;
+    --badge-bg: #b8336a;
+    --muted: #d3c3dc;
+    --focus: #aebcff;
+    --header-start: #3a2839;
+    --header-end: #20323d;
+    --button-ink: #3b2a4a;
+    --button-secondary-bg: #3a3043;
+    --button-secondary-hover-bg: #4a3b54;
+    --field-bg: #2b2234;
+    --footer-bg: #3a2839;
+    --skip-bg: #34243d;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

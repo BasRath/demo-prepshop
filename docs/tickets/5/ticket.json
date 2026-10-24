@@ -1,0 +1,10 @@
+{
+  "id": 5,
+  "title": "Add dark mode to shop",
+  "status": "todo",
+  "slug": "add-dark-mode-to-shop",
+  "url": "https://basic-scrum-board.vercel.app/api/tickets/5",
+  "createdAt": "2026-10-24T18:21:49.810Z",
+  "updatedAt": "2026-10-24T18:39:20.344Z",
+  "description": "Acceptance criteria\n1 Add dark mode to shop\n2 Make no changes to light mode or any other functionality."
+}
