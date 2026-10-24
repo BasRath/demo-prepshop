@@ -1,0 +1,10 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^git status --porcelain && printf '\\\\n--- dependencies ---\\\\n' && if \\[ -d node_modules \\]; then echo 'node_modules present'; else echo 'node_modules missing'; fi && printf '\\\\n--- branch ---\\\\n' && git branch --show-current$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    },
+    "cucumber.features": ["tests/e2e/features/**/*.feature"],
+    "cucumber.glue": ["tests/e2e/steps/**/*.js"]
+}

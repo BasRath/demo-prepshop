@@ -85,6 +85,52 @@
 | 10 | Kawaii doomsday stories | Opening a story from its card | AC5 | high | ✅ passed |
 | 11 | Kawaii doomsday stories | Every product is recommended by at least one of the five stories | AC6 | medium | ✅ passed |
 
+### Proof – screenshots
+
+#### 1. Number of story cards on a 719 pixel wide screen is 0 – ✅ passed
+
+_No screenshot proof recorded._
+
+#### 2. Number of story cards on a 720 pixel wide screen is 1 – ✅ passed
+
+_No screenshot proof recorded._
+
+#### 3. Number of story cards on a 1023 pixel wide screen is 1 – ✅ passed
+
+_No screenshot proof recorded._
+
+#### 4. Number of story cards on a 1024 pixel wide screen is 3 – ✅ passed
+
+_No screenshot proof recorded._
+
+#### 5. Number of story cards on a 1439 pixel wide screen is 3 – ✅ passed
+
+_No screenshot proof recorded._
+
+#### 6. Number of story cards on a 1440 pixel wide screen is 5 – ✅ passed
+
+_No screenshot proof recorded._
+
+#### 7. The stories move on by one after 10 seconds – ✅ passed
+
+_No screenshot proof recorded._
+
+#### 8. Pausing the stories keeps them in place – ✅ passed
+
+_No screenshot proof recorded._
+
+#### 9. With room for all five stories nothing moves – ✅ passed
+
+_No screenshot proof recorded._
+
+#### 10. Opening a story from its card – ✅ passed
+
+_No screenshot proof recorded._
+
+#### 11. Every product is recommended by at least one of the five stories – ✅ passed
+
+_No screenshot proof recorded._
+
 ## 6. Regression – existing scenarios
 
 | Feature file | Passed | Failed | Flaky | Skipped |
@@ -116,6 +162,12 @@
 - [.github/skills/test-report/examples/ticket-1/screenshots/S1-01-one-card-at-720.png](ticket-1/screenshots/S1-01-one-card-at-720.png)
 - [.github/skills/test-report/examples/ticket-1/screenshots/S1-02-title-truncated-at-721.png](ticket-1/screenshots/S1-02-title-truncated-at-721.png)
 - [.github/skills/test-report/examples/ticket-1/screenshots/S1-03-focus-lost-after-cycle.png](ticket-1/screenshots/S1-03-focus-lost-after-cycle.png)
+
+![screenshots/S1-01-one-card-at-720.png](ticket-1/screenshots/S1-01-one-card-at-720.png)
+
+![screenshots/S1-02-title-truncated-at-721.png](ticket-1/screenshots/S1-02-title-truncated-at-721.png)
+
+![screenshots/S1-03-focus-lost-after-cycle.png](ticket-1/screenshots/S1-03-focus-lost-after-cycle.png)
 
 ### S2 – Explore the five story pages with keyboard and the accessibility snapshot to discover navigation, content-length and tone problems
 
@@ -180,6 +232,8 @@
 
 **Evidence:** [.github/skills/test-report/examples/ticket-1/screenshots/S1-03-focus-lost-after-cycle.png](ticket-1/screenshots/S1-03-focus-lost-after-cycle.png)
 
+![screenshots/S1-03-focus-lost-after-cycle.png](ticket-1/screenshots/S1-03-focus-lost-after-cycle.png)
+
 ### F2 – Long story title truncated at 721 px without a way to read it in full
 
 **Steps to reproduce:**
@@ -193,10 +247,23 @@
 
 **Evidence:** [.github/skills/test-report/examples/ticket-1/screenshots/S1-02-title-truncated-at-721.png](ticket-1/screenshots/S1-02-title-truncated-at-721.png)
 
+![screenshots/S1-02-title-truncated-at-721.png](ticket-1/screenshots/S1-02-title-truncated-at-721.png)
+
 ## 9. Residual risks
 
 - AC1 (low risk) is not automated: Subjective content quality; reviewed during exploratory session S2.
 - AC2 (low risk) is not automated: Static content with no input; counted once during exploratory session S2.
+- Scenario "Number of story cards on a 719 pixel wide screen is 0" has no screenshot proof.
+- Scenario "Number of story cards on a 720 pixel wide screen is 1" has no screenshot proof.
+- Scenario "Number of story cards on a 1023 pixel wide screen is 1" has no screenshot proof.
+- Scenario "Number of story cards on a 1024 pixel wide screen is 3" has no screenshot proof.
+- Scenario "Number of story cards on a 1439 pixel wide screen is 3" has no screenshot proof.
+- Scenario "Number of story cards on a 1440 pixel wide screen is 5" has no screenshot proof.
+- Scenario "The stories move on by one after 10 seconds" has no screenshot proof.
+- Scenario "Pausing the stories keeps them in place" has no screenshot proof.
+- Scenario "With room for all five stories nothing moves" has no screenshot proof.
+- Scenario "Opening a story from its card" has no screenshot proof.
+- Scenario "Every product is recommended by at least one of the five stories" has no screenshot proof.
 - F2 (low) is still open: Long story title truncated at 721 px without a way to read it in full
 - Not explored: Firefox and WebKit – the project tests Chromium only.
 - Not explored: Screen widths below 720 px beyond a single check – story cards are out of scope there.
@@ -207,6 +274,7 @@
 - [.github/skills/test-report/examples/ticket-1/requirements.json](ticket-1/requirements.json)
 - [.github/skills/test-report/examples/ticket-1/exploratory.json](ticket-1/exploratory.json)
 - [tests/e2e/features/tickets/ticket-1-create-kawaii-doomsday-stories.feature](../../../../tests/e2e/features/tickets/ticket-1-create-kawaii-doomsday-stories.feature)
+- [.github/skills/test-report/examples/report.html](report.html)
 
 ---
 

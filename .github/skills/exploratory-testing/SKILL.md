@@ -34,6 +34,12 @@ Output: `docs/tickets/<id>/exploratory.json` and `docs/tickets/<id>/screenshots/
    - Check `playwright-cli -s=… console error` at least once per page visited (the favicon 404 is known noise).
    - Save evidence only when it proves something (a finding or a key observation):
      `--filename=docs/tickets/<id>/screenshots/<session>-<nn>-<slug>.png` (deterministic names, `nn` = 01, 02, …).
+     Evidence is embedded as an image in `report.html`, so it must show the point by itself: before saving, scroll the
+     relevant element into view (`playwright-cli -s=… eval "el => el.scrollIntoView({ block: 'center' })" <ref>`
+     with the ref from the snapshot) and make sure nothing covers it. Prefer a viewport screenshot that shows the
+     element in context over `--full-page`. After saving, **open the PNG with the `view` tool** and
+     check the changed or broken part is visible in the viewport; if not, adjust (scroll, resize, reach the state again)
+     and overwrite the file.
    - Close: `playwright-cli -s=t<id>-S1 close`.
 4. **Log** every session and finding in `exploratory.json` using [exploratory-schema.md](./references/exploratory-schema.md).
    Notes are factual observations ("At 1023 px one card is shown"), not opinions. Severity follows the table in the schema.

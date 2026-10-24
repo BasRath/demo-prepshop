@@ -49,8 +49,9 @@ kept in your browser's `localStorage` and the checkout form data is never sent o
 │   ├── e2e/features/baseline/      # Gherkin regression suite for the existing shop
 │   ├── e2e/features/tickets/       # Gherkin features added per ticket
 │   ├── e2e/steps/                  # Step definitions
+│   ├── e2e/support/proof.js        # Screenshot proof helper for Then steps
 │   └── support/static-server.mjs   # Local server used by the tests
-├── docs/tickets/<id>/              # Per-ticket requirements, exploratory log and test report
+├── docs/tickets/<id>/              # Per-ticket requirements, exploratory log, proof and test report (MD + HTML)
 ├── .github/
 │   ├── copilot-instructions.md     # Project conventions for the AI agent
 │   └── skills/                     # Feature development skills (see below)
@@ -85,7 +86,9 @@ npm run test:e2e                    # all scenarios (baseline + tickets)
 npm run test:e2e:ticket -- @ticket-5   # only the scenarios tagged @ticket-5
 ```
 
-Results are written to `test-results/e2e-results.json`.
+Results are written to `test-results/e2e-results.json`. Every visual `Then` step attaches a screenshot
+(`proof: …`) of the verified element, scrolled into view and outlined; the step fails if that element is not
+visible in the viewport.
 
 ## Developing a feature from a ticket
 
@@ -98,7 +101,8 @@ In GitHub Copilot agent mode run:
 
 The agent fetches the ticket, asks multiple-choice questions only about things it cannot
 derive, writes risk-based Gherkin scenarios, implements the feature, explores it with
-`playwright-cli`, and generates a deterministic test report in `docs/tickets/5/report.md`.
+`playwright-cli`, generates a deterministic test report in `docs/tickets/5/report.md` and `report.html`
+(with screenshot proof per scenario) and opens the HTML report when it is done.
 See [.github/skills/README.md](.github/skills/README.md) for the stages and a worked example.
 
 ## Deploy to Vercel (Hobby plan)

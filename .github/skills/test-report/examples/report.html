@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Test report – Ticket #1: Create kawaii doomsday stories</title>
+<style>
+  :root { color-scheme: light; --ink: #2d2240; --muted: #6b5f7d; --line: #e4dcef; --bg: #fffaff; --accent: #ff00aa; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 15px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg); }
+  main { max-width: 1180px; margin: 0 auto; padding: 32px 24px 64px; }
+  h1 { font-size: 1.8rem; margin: 0 0 16px; }
+  h2 { margin-top: 40px; padding-bottom: 6px; border-bottom: 2px solid var(--line); }
+  h3 { margin-top: 28px; }
+  h4 { margin: 24px 0 8px; }
+  .verdict-banner { padding: 12px 16px; border-radius: 10px; font-weight: 700; margin: 0 0 20px; }
+  .verdict-banner.passed { background: #e3f7e8; } .verdict-banner.issues { background: #fff4d6; }
+  .verdict-banner.failed { background: #fde2e4; } .verdict-banner.incomplete { background: #ece8f3; }
+  .table { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; margin: 8px 0 16px; background: #fff; }
+  th, td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: #f6f0fb; }
+  code { background: #f3edf8; padding: 1px 4px; border-radius: 4px; font-size: 0.92em; }
+  a { color: #a0226c; }
+  figure { margin: 8px 0 24px; padding: 12px; background: #fff; border: 1px solid var(--line); border-radius: 10px; }
+  figure img { display: block; max-width: 100%; height: auto; border: 1px solid var(--line); border-radius: 6px; }
+  figcaption { margin-top: 8px; color: var(--muted); font-size: 0.92rem; }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 40px 0 16px; }
+</style>
+</head>
+<body>
+<main>
+<div class="verdict-banner issues">Verdict: ⚠️ PASSED WITH ISSUES</div>
+<h1 id="test-report-ticket-1-create-kawaii-doomsday-stories">Test report – Ticket #1: Create kawaii doomsday stories</h1>
+<div class="table"><table>
+<thead><tr><th>Item</th><th>Value</th></tr></thead>
+<tbody><tr><td>Ticket</td><td><a href="https://basic-scrum-board.vercel.app/api/tickets/1">#1</a></td></tr><tr><td>Ticket status</td><td>in-progress</td></tr><tr><td>Ticket last updated</td><td>2026-10-24T19:03:10.047Z</td></tr><tr><td>Verdict</td><td><strong>⚠️ PASSED WITH ISSUES</strong></td></tr></tbody>
+</table></div>
+<h2 id="1-summary">1. Summary</h2>
+<ul><li>1 open medium/low finding.</li></ul>
+<div class="table"><table>
+<thead><tr><th>Area</th><th>Passed</th><th>Passed with issues</th><th>Failed</th><th>Not covered / skipped</th><th>Total</th></tr></thead>
+<tbody><tr><td>Acceptance criteria</td><td>5</td><td>1</td><td>0</td><td>0</td><td>6</td></tr><tr><td>Automated scenarios – this ticket</td><td>11</td><td>0</td><td>0</td><td>0</td><td>11</td></tr><tr><td>Automated scenarios – regression</td><td>9</td><td>0</td><td>0</td><td>0</td><td>9</td></tr><tr><td>Exploratory sessions</td><td>3</td><td>0</td><td>0</td><td>0</td><td>3</td></tr></tbody>
+</table></div>
+<div class="table"><table>
+<thead><tr><th>Findings</th><th>critical</th><th>high</th><th>medium</th><th>low</th></tr></thead>
+<tbody><tr><td>Open</td><td>0</td><td>0</td><td>0</td><td>1</td></tr><tr><td>Fixed</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>Accepted</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody>
+</table></div>
+<h2 id="2-goal-and-scope">2. Goal and scope</h2>
+<p><strong>Goal:</strong> Shoppers on wider screens see cute doomsday story cards in the header that cycle and open a story page recommending the products that help in that scenario.</p>
+<p><strong>Affected areas:</strong></p>
+<ul><li>All *.html pages (header)</li><li>README.md</li><li>shop.js</li><li>story-*.html (new)</li><li>style.css</li></ul>
+<p><strong>Out of scope:</strong></p>
+<ul><li>Story cards on screens narrower than 720px</li><li>Sharing or commenting on stories</li><li>Changes to products, basket or checkout</li></ul>
+<h2 id="3-clarifications-and-decisions">3. Clarifications and decisions</h2>
+<div class="table"><table>
+<thead><tr><th>ID</th><th>Topic</th><th>Decision</th><th>Source</th><th>Evidence</th></tr></thead>
+<tbody><tr><td>D1</td><td>Duplicate criterion number</td><td>Second criterion 5 becomes AC6.</td><td>🔎 Derived</td><td>Ticket text numbers two criteria as 5.</td></tr><tr><td>D2</td><td>Meaning of kawaii</td><td>Same cute anime, tongue-in-cheek tone as the existing shop copy.</td><td>🔎 Derived</td><td>README.md 'anime-themed'; index.html title 'Kawaii Doomsday Supplies'; copilot-instructions tone rule.</td></tr><tr><td>D3</td><td>Card count per screen width</td><td>0 below 720px, 1 from 720px, 3 from 1024px, 5 from 1440px.</td><td>🙋 Asked</td><td>Asked: 'AC3: at which screen widths should 0, 1, 3 and 5 story cards be shown in the header?'</td></tr><tr><td>D4</td><td>Cycling behaviour</td><td>Advance by one story every 10 seconds.</td><td>🙋 Asked</td><td>Asked: 'AC4: when fewer than 5 cards are visible, what should change every 10 seconds?'</td></tr><tr><td>D5</td><td>Pause control</td><td>Visible pause/play button; cycling also pauses while a card is hovered or has focus.</td><td>🔎 Derived</td><td>WCAG 2.2.2 Pause, Stop, Hide; copilot-instructions accessibility rule.</td></tr><tr><td>D6</td><td>Reduced motion</td><td>No slide animation when prefers-reduced-motion is set; cards still change.</td><td>🔎 Derived</td><td>style.css: @media (prefers-reduced-motion: reduce).</td></tr><tr><td>D7</td><td>Card content</td><td>Story title and a one-line teaser; the whole card is one link.</td><td>🔎 Derived</td><td>Limited header space; HTML semantics for navigation.</td></tr><tr><td>D8</td><td>Story page technology</td><td>One static page per story (story-&lt;slug&gt;.html) using the product page skeleton.</td><td>🔎 Derived</td><td>Static site without build step; strict CSP (copilot-instructions).</td></tr><tr><td>D9</td><td>Story page content</td><td>Story title as h1, story text, then links to the products that help.</td><td>🔎 Derived</td><td>AC6 requires products to be beneficial; product pages exist.</td></tr><tr><td>D10</td><td>Choice of legends</td><td>Ragnarök, The Kraken's Bath Day, The Mind-Ray Mothership, The Great Calendar Reset, The Moon Catches a Cold.</td><td>🔎 Derived</td><td>Creative content without behavioural impact, constrained by AC1, AC2 and AC6.</td></tr><tr><td>D11</td><td>Pages with cards</td><td>Cards appear in the header on every page.</td><td>🔎 Derived</td><td>All pages share the same site-header markup.</td></tr></tbody>
+</table></div>
+<h2 id="4-acceptance-criteria">4. Acceptance criteria</h2>
+<div class="table"><table>
+<thead><tr><th>AC</th><th>Criterion</th><th>Risk</th><th>Automated</th><th>Exploratory</th><th>Findings</th><th>Status</th></tr></thead>
+<tbody><tr><td>AC1</td><td>Every story is written in the shop's cute, tongue-in-cheek anime tone; factual accuracy is not required.</td><td>low</td><td>Not automated (see 9)</td><td>S2</td><td>None</td><td>✅ Passed</td></tr><tr><td>AC2</td><td>Each story page shows between 1 and 3 paragraphs of story text.</td><td>low</td><td>Not automated (see 9)</td><td>S2</td><td>None</td><td>✅ Passed</td></tr><tr><td>AC3</td><td>The header shows 0 story cards below 720px wide, 1 from 720px, 3 from 1024px and 5 from 1440px, without overlapping the logo or the basket link.</td><td>high</td><td>6/6 passed</td><td>S1</td><td>F2 (open)</td><td>⚠️ Passed with issues</td></tr><tr><td>AC4</td><td>When fewer than 5 cards are visible, the cards advance by one story every 10 seconds; with 5 cards visible nothing moves. A pause button stops cycling, and cycling pauses while a card is hovered or focused.</td><td>high</td><td>3/3 passed</td><td>S1</td><td>F1 (fixed)</td><td>✅ Passed</td></tr><tr><td>AC5</td><td>Activating a story card (click or Enter) opens that story's page, whose main heading is the story title.</td><td>high</td><td>1/1 passed</td><td>S2</td><td>None</td><td>✅ Passed</td></tr><tr><td>AC6</td><td>There are exactly 5 stories based on lore or legend; every product (Dehydrated Water, Tinfoil Thinking Cap, Canned Optimism) is recommended with a link on at least one story page.</td><td>medium</td><td>1/1 passed</td><td>S2</td><td>None</td><td>✅ Passed</td></tr></tbody>
+</table></div>
+<h2 id="5-automated-scenarios-this-ticket">5. Automated scenarios – this ticket</h2>
+<div class="table"><table>
+<thead><tr><th>#</th><th>Feature</th><th>Scenario</th><th>AC</th><th>Risk</th><th>Result</th></tr></thead>
+<tbody><tr><td>1</td><td>Kawaii doomsday stories</td><td>Number of story cards on a 719 pixel wide screen is 0</td><td>AC3</td><td>high</td><td>✅ passed</td></tr><tr><td>2</td><td>Kawaii doomsday stories</td><td>Number of story cards on a 720 pixel wide screen is 1</td><td>AC3</td><td>high</td><td>✅ passed</td></tr><tr><td>3</td><td>Kawaii doomsday stories</td><td>Number of story cards on a 1023 pixel wide screen is 1</td><td>AC3</td><td>high</td><td>✅ passed</td></tr><tr><td>4</td><td>Kawaii doomsday stories</td><td>Number of story cards on a 1024 pixel wide screen is 3</td><td>AC3</td><td>high</td><td>✅ passed</td></tr><tr><td>5</td><td>Kawaii doomsday stories</td><td>Number of story cards on a 1439 pixel wide screen is 3</td><td>AC3</td><td>high</td><td>✅ passed</td></tr><tr><td>6</td><td>Kawaii doomsday stories</td><td>Number of story cards on a 1440 pixel wide screen is 5</td><td>AC3</td><td>high</td><td>✅ passed</td></tr><tr><td>7</td><td>Kawaii doomsday stories</td><td>The stories move on by one after 10 seconds</td><td>AC4</td><td>high</td><td>✅ passed</td></tr><tr><td>8</td><td>Kawaii doomsday stories</td><td>Pausing the stories keeps them in place</td><td>AC4</td><td>high</td><td>✅ passed</td></tr><tr><td>9</td><td>Kawaii doomsday stories</td><td>With room for all five stories nothing moves</td><td>AC4</td><td>medium</td><td>✅ passed</td></tr><tr><td>10</td><td>Kawaii doomsday stories</td><td>Opening a story from its card</td><td>AC5</td><td>high</td><td>✅ passed</td></tr><tr><td>11</td><td>Kawaii doomsday stories</td><td>Every product is recommended by at least one of the five stories</td><td>AC6</td><td>medium</td><td>✅ passed</td></tr></tbody>
+</table></div>
+<h3 id="proof-screenshots">Proof – screenshots</h3>
+<h4 id="1-number-of-story-cards-on-a-719-pixel-wide-screen-is-0-pass">1. Number of story cards on a 719 pixel wide screen is 0 – ✅ passed</h4>
+<p><em>No screenshot proof recorded.</em></p>
+<h4 id="2-number-of-story-cards-on-a-720-pixel-wide-screen-is-1-pass">2. Number of story cards on a 720 pixel wide screen is 1 – ✅ passed</h4>
+<p><em>No screenshot proof recorded.</em></p>
+<h4 id="3-number-of-story-cards-on-a-1023-pixel-wide-screen-is-1-pas">3. Number of story cards on a 1023 pixel wide screen is 1 – ✅ passed</h4>
+<p><em>No screenshot proof recorded.</em></p>
+<h4 id="4-number-of-story-cards-on-a-1024-pixel-wide-screen-is-3-pas">4. Number of story cards on a 1024 pixel wide screen is 3 – ✅ passed</h4>
+<p><em>No screenshot proof recorded.</em></p>
+<h4 id="5-number-of-story-cards-on-a-1439-pixel-wide-screen-is-3-pas">5. Number of story cards on a 1439 pixel wide screen is 3 – ✅ passed</h4>
+<p><em>No screenshot proof recorded.</em></p>
+<h4 id="6-number-of-story-cards-on-a-1440-pixel-wide-screen-is-5-pas">6. Number of story cards on a 1440 pixel wide screen is 5 – ✅ passed</h4>
+<p><em>No screenshot proof recorded.</em></p>
+<h4 id="7-the-stories-move-on-by-one-after-10-seconds-passed">7. The stories move on by one after 10 seconds – ✅ passed</h4>
+<p><em>No screenshot proof recorded.</em></p>
+<h4 id="8-pausing-the-stories-keeps-them-in-place-passed">8. Pausing the stories keeps them in place – ✅ passed</h4>
+<p><em>No screenshot proof recorded.</em></p>
+<h4 id="9-with-room-for-all-five-stories-nothing-moves-passed">9. With room for all five stories nothing moves – ✅ passed</h4>
+<p><em>No screenshot proof recorded.</em></p>
+<h4 id="10-opening-a-story-from-its-card-passed">10. Opening a story from its card – ✅ passed</h4>
+<p><em>No screenshot proof recorded.</em></p>
+<h4 id="11-every-product-is-recommended-by-at-least-one-of-the-five">11. Every product is recommended by at least one of the five stories – ✅ passed</h4>
+<p><em>No screenshot proof recorded.</em></p>
+<h2 id="6-regression-existing-scenarios">6. Regression – existing scenarios</h2>
+<div class="table"><table>
+<thead><tr><th>Feature file</th><th>Passed</th><th>Failed</th><th>Flaky</th><th>Skipped</th></tr></thead>
+<tbody><tr><td>tests/e2e/features/baseline/checkout.feature</td><td>4</td><td>0</td><td>0</td><td>0</td></tr><tr><td>tests/e2e/features/baseline/shopping-basket.feature</td><td>5</td><td>0</td><td>0</td><td>0</td></tr></tbody>
+</table></div>
+<h2 id="7-exploratory-testing-sessions">7. Exploratory testing sessions</h2>
+<h3 id="s1-explore-the-header-story-cards-with-widths-around-7201024">S1 – Explore the header story cards with widths around 720/1024/1440 px, keyboard focus, hover and reduced motion to discover overlap, clipping and cycling/pause problems</h3>
+<div class="table"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody><tr><td>Status</td><td>✅ completed</td></tr><tr><td>Acceptance criteria</td><td>AC3, AC4</td></tr><tr><td>Heuristics</td><td>Boundaries, Goldilocks, Keyboard only, Preferences, Interrupt</td></tr><tr><td>Environments</td><td>Chromium 720x800, Chromium 721x800, Chromium 1023x800, Chromium 1024x800, Chromium 1440x900, reduced motion</td></tr><tr><td>Findings</td><td>F1, F2</td></tr></tbody>
+</table></div>
+<p><strong>Notes:</strong></p>
+<ul><li>At 720 px one card is shown and fits between logo and basket.</li><li>At 1024 px three cards are shown; at 1440 px five cards are shown and nothing moves.</li><li>Cycling pauses on hover (D5) and changes cards without animation under reduced motion (D6).</li><li>Cycling did not pause while a card had keyboard focus (F1); after the fix focus pauses cycling.</li></ul>
+<p><strong>Evidence:</strong></p>
+<ul><li><a href="ticket-1/screenshots/S1-01-one-card-at-720.png">.github/skills/test-report/examples/ticket-1/screenshots/S1-01-one-card-at-720.png</a></li><li><a href="ticket-1/screenshots/S1-02-title-truncated-at-721.png">.github/skills/test-report/examples/ticket-1/screenshots/S1-02-title-truncated-at-721.png</a></li><li><a href="ticket-1/screenshots/S1-03-focus-lost-after-cycle.png">.github/skills/test-report/examples/ticket-1/screenshots/S1-03-focus-lost-after-cycle.png</a></li></ul>
+<figure><a href="ticket-1/screenshots/S1-01-one-card-at-720.png" target="_blank" rel="noopener"><img src="ticket-1/screenshots/S1-01-one-card-at-720.png" alt="screenshots/S1-01-one-card-at-720.png" loading="lazy"></a><figcaption>screenshots/S1-01-one-card-at-720.png</figcaption></figure>
+<figure><a href="ticket-1/screenshots/S1-02-title-truncated-at-721.png" target="_blank" rel="noopener"><img src="ticket-1/screenshots/S1-02-title-truncated-at-721.png" alt="screenshots/S1-02-title-truncated-at-721.png" loading="lazy"></a><figcaption>screenshots/S1-02-title-truncated-at-721.png</figcaption></figure>
+<figure><a href="ticket-1/screenshots/S1-03-focus-lost-after-cycle.png" target="_blank" rel="noopener"><img src="ticket-1/screenshots/S1-03-focus-lost-after-cycle.png" alt="screenshots/S1-03-focus-lost-after-cycle.png" loading="lazy"></a><figcaption>screenshots/S1-03-focus-lost-after-cycle.png</figcaption></figure>
+<h3 id="s2-explore-the-five-story-pages-with-keyboard-and-the-access">S2 – Explore the five story pages with keyboard and the accessibility snapshot to discover navigation, content-length and tone problems</h3>
+<div class="table"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody><tr><td>Status</td><td>✅ completed</td></tr><tr><td>Acceptance criteria</td><td>AC1, AC2, AC5, AC6</td></tr><tr><td>Heuristics</td><td>Consistency, Assistive tech, Boundaries</td></tr><tr><td>Environments</td><td>Chromium 1440x900</td></tr><tr><td>Findings</td><td>None</td></tr></tbody>
+</table></div>
+<p><strong>Notes:</strong></p>
+<ul><li>All five stories open from their card with Enter; h1 matches the card title.</li><li>Paragraph counts: 3, 2, 3, 3, 2 (AC2 met).</li><li>Tone is cute and tongue-in-cheek, consistent with product copy (AC1 met).</li><li>Each product is linked from at least one story: Dehydrated Water (2), Tinfoil Thinking Cap (2), Canned Optimism (2).</li></ul>
+<p><strong>Evidence:</strong></p>
+<ul><li>None.</li></ul>
+<h3 id="s3-explore-basket-and-checkout-with-the-new-header-on-720-an">S3 – Explore basket and checkout with the new header on 720 and 1440 px to discover regressions caused by the shared header change</h3>
+<div class="table"><table>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody><tr><td>Status</td><td>✅ completed</td></tr><tr><td>Acceptance criteria</td><td>–</td></tr><tr><td>Heuristics</td><td>Consistency, State/persistence, Repetition</td></tr><tr><td>Environments</td><td>Chromium 720x800, Chromium 1440x900</td></tr><tr><td>Findings</td><td>None</td></tr></tbody>
+</table></div>
+<p><strong>Notes:</strong></p>
+<ul><li>Basket count stays correct across pages and reloads.</li><li>Checkout and thank-you message unaffected; no console errors besides the known favicon 404.</li></ul>
+<p><strong>Evidence:</strong></p>
+<ul><li>None.</li></ul>
+<h2 id="8-findings">8. Findings</h2>
+<div class="table"><table>
+<thead><tr><th>ID</th><th>Severity</th><th>Status</th><th>AC</th><th>Session</th><th>Title</th></tr></thead>
+<tbody><tr><td>F1</td><td>medium</td><td>fixed</td><td>AC4</td><td>S1</td><td>Story cards keep cycling while a card has keyboard focus</td></tr><tr><td>F2</td><td>low</td><td>open</td><td>AC3</td><td>S1</td><td>Long story title truncated at 721 px without a way to read it in full</td></tr></tbody>
+</table></div>
+<h3 id="f1-story-cards-keep-cycling-while-a-card-has-keyboard-focus">F1 – Story cards keep cycling while a card has keyboard focus</h3>
+<p><strong>Steps to reproduce:</strong></p>
+<ol><li>Open the shop at 1024 px wide</li><li>Press Tab until the first story card has focus</li><li>Wait 10 seconds</li></ol>
+<p><strong>Expected:</strong> Cycling pauses while a card has focus (decision D5).</p>
+<p><strong>Actual:</strong> The focused card slides away and focus is lost.</p>
+<p><strong>Resolution:</strong> Added focusin/focusout handlers that pause and resume the timer; retested with the same steps in S1 – focus now pauses cycling.</p>
+<p><strong>Evidence:</strong> <a href="ticket-1/screenshots/S1-03-focus-lost-after-cycle.png">.github/skills/test-report/examples/ticket-1/screenshots/S1-03-focus-lost-after-cycle.png</a></p>
+<figure><a href="ticket-1/screenshots/S1-03-focus-lost-after-cycle.png" target="_blank" rel="noopener"><img src="ticket-1/screenshots/S1-03-focus-lost-after-cycle.png" alt="screenshots/S1-03-focus-lost-after-cycle.png" loading="lazy"></a><figcaption>screenshots/S1-03-focus-lost-after-cycle.png</figcaption></figure>
+<h3 id="f2-long-story-title-truncated-at-721-px-without-a-way-to-rea">F2 – Long story title truncated at 721 px without a way to read it in full</h3>
+<p><strong>Steps to reproduce:</strong></p>
+<ol><li>Open the shop at 721 px wide</li><li>Look at the single story card</li></ol>
+<p><strong>Expected:</strong> The full story title is readable or available.</p>
+<p><strong>Actual:</strong> &quot;The Great Calendar Reset&quot; is shown as &quot;The Great Calen…&quot;.</p>
+<p><strong>Evidence:</strong> <a href="ticket-1/screenshots/S1-02-title-truncated-at-721.png">.github/skills/test-report/examples/ticket-1/screenshots/S1-02-title-truncated-at-721.png</a></p>
+<figure><a href="ticket-1/screenshots/S1-02-title-truncated-at-721.png" target="_blank" rel="noopener"><img src="ticket-1/screenshots/S1-02-title-truncated-at-721.png" alt="screenshots/S1-02-title-truncated-at-721.png" loading="lazy"></a><figcaption>screenshots/S1-02-title-truncated-at-721.png</figcaption></figure>
+<h2 id="9-residual-risks">9. Residual risks</h2>
+<ul><li>AC1 (low risk) is not automated: Subjective content quality; reviewed during exploratory session S2.</li><li>AC2 (low risk) is not automated: Static content with no input; counted once during exploratory session S2.</li><li>Scenario &quot;Number of story cards on a 719 pixel wide screen is 0&quot; has no screenshot proof.</li><li>Scenario &quot;Number of story cards on a 720 pixel wide screen is 1&quot; has no screenshot proof.</li><li>Scenario &quot;Number of story cards on a 1023 pixel wide screen is 1&quot; has no screenshot proof.</li><li>Scenario &quot;Number of story cards on a 1024 pixel wide screen is 3&quot; has no screenshot proof.</li><li>Scenario &quot;Number of story cards on a 1439 pixel wide screen is 3&quot; has no screenshot proof.</li><li>Scenario &quot;Number of story cards on a 1440 pixel wide screen is 5&quot; has no screenshot proof.</li><li>Scenario &quot;The stories move on by one after 10 seconds&quot; has no screenshot proof.</li><li>Scenario &quot;Pausing the stories keeps them in place&quot; has no screenshot proof.</li><li>Scenario &quot;With room for all five stories nothing moves&quot; has no screenshot proof.</li><li>Scenario &quot;Opening a story from its card&quot; has no screenshot proof.</li><li>Scenario &quot;Every product is recommended by at least one of the five stories&quot; has no screenshot proof.</li><li>F2 (low) is still open: Long story title truncated at 721 px without a way to read it in full</li><li>Not explored: Firefox and WebKit – the project tests Chromium only.</li><li>Not explored: Screen widths below 720 px beyond a single check – story cards are out of scope there.</li></ul>
+<h2 id="10-artifacts">10. Artifacts</h2>
+<ul><li><a href="ticket-1/ticket.json">.github/skills/test-report/examples/ticket-1/ticket.json</a></li><li><a href="ticket-1/requirements.json">.github/skills/test-report/examples/ticket-1/requirements.json</a></li><li><a href="ticket-1/exploratory.json">.github/skills/test-report/examples/ticket-1/exploratory.json</a></li><li><a href="../../../../tests/e2e/features/tickets/ticket-1-create-kawaii-doomsday-stories.feature">tests/e2e/features/tickets/ticket-1-create-kawaii-doomsday-stories.feature</a></li><li><a href="report.html">.github/skills/test-report/examples/report.html</a></li></ul>
+<hr>
+<p><em>Generated by <code>.github/skills/test-report/scripts/generate-report.mjs</code>. Do not edit by hand; re-run the script instead.</em></p>
+</main>
+</body>
+</html>

@@ -1,13 +1,14 @@
 ---
 name: develop-feature
-description: 'Develop and test a feature end to end from a scrum board ticket number. Use when asked to develop, build, implement or deliver ticket <number> / #<number>, or "/develop-feature 5". Fetches the ticket, refines it with multiple-choice clarifications, designs risk-based Gherkin E2E tests, implements the feature, runs automated and exploratory (playwright-cli) tests, fixes defects and generates a deterministic test report.'
+description: 'Develop and test a feature end to end from a scrum board ticket number. Use when asked to develop, build, implement or deliver ticket <number> / #<number>, or "/develop-feature 5". Fetches the ticket, refines it with multiple-choice clarifications, designs risk-based Gherkin E2E tests, implements the feature, runs automated and exploratory (playwright-cli) tests with screenshot proof, fixes defects, generates a deterministic HTML test report and opens it.'
 argument-hint: '<ticket-number>, e.g. 5'
 ---
 
 # Develop feature from a ticket
 
 Single entry point. Given a ticket number it delivers a committed feature branch with code, Gherkin E2E tests,
-an exploratory testing log and a deterministic report in `docs/tickets/<id>/report.md`.
+an exploratory testing log and a deterministic report in `docs/tickets/<id>/report.md` and `report.html`, with
+screenshot proof of every ticket scenario and every exploratory observation. The HTML report is opened as the last step.
 
 Project conventions: [copilot-instructions.md](../../copilot-instructions.md). Pipeline overview: [skills README](../README.md).
 
@@ -43,10 +44,16 @@ Write `tests/e2e/features/tickets/ticket-<id>-<slug>.feature` before implementin
 - Update `README.md` (Features / Project structure) and `tests/e2e/support/products.js` if products change.
 
 ### 5. Automate and run → [write-e2e-tests](../write-e2e-tests/SKILL.md), *Automate* phase
-Bind steps, run the ticket scenarios, then the full suite. Fix the **implementation** until green; only change a scenario when it contradicts `requirements.json`.
+Bind steps (every visual `Then` step calls `captureProof`), run the ticket scenarios, then the full suite. Fix the
+**implementation** until green; only change a scenario when it contradicts `requirements.json`.
+
+**Proof review:** view every proof screenshot of the ticket scenarios. When the change under test is not visible in the
+viewport (wrong element outlined, cut off, covered, wrong state, needs another width/hover/focus), change the **test** so
+it is – proof locator, an extra `Given`/`When` step for viewport or state – and re-run. Never alter assertions for this.
 
 ### 6. Explore → [exploratory-testing](../exploratory-testing/SKILL.md)
-Charter-based `playwright-cli` sessions. Produces `docs/tickets/<id>/exploratory.json` and screenshots.
+Charter-based `playwright-cli` sessions. Produces `docs/tickets/<id>/exploratory.json` and screenshots. View each saved
+screenshot and retake it when the observation or finding is not visible in the viewport.
 
 ### 7. Fix loop (max 3 iterations)
 For each **open** finding with severity `critical`, `high` or `medium` that is in scope:
@@ -54,25 +61,34 @@ fix → re-run step 5 → re-test the finding with `playwright-cli` → set `"st
 If a finding reveals a missing scenario for a high-risk criterion, add it (step 3 rules). Leave `low` findings and anything out of scope `open` or `accepted` with a reason. After 3 loops, stop fixing and report what is left.
 
 ### 8. Report → [test-report](../test-report/SKILL.md)
-`npm run report -- --ticket <id>`. Never edit `report.md` by hand.
+`npm run report -- --ticket <id>` writes `report.md`, `report.html` and `proof/`. Never edit them by hand.
+Check the proof in the HTML (see test-report step 4): every ticket scenario has a screenshot that shows the change;
+otherwise go back to step 5 and regenerate.
 
 ### 9. Commit
-Stage the feature code, tests, README and `docs/tickets/<id>/`. Commit on the feature branch:
+Stage the feature code, tests, README and `docs/tickets/<id>/` (including `report.html`, `proof/` and `screenshots/`). Commit on the feature branch:
 
 ```text
 feat(ticket-<id>): <ticket title>
 
 <one line per acceptance criterion and its status>
-Test report: docs/tickets/<id>/report.md
+Test report: docs/tickets/<id>/report.html
 ```
 
 Do not push or open a PR unless asked.
 
 ### 10. Hand-over
-Reply concisely: verdict, link to `report.md`, decisions that were asked vs. derived, open findings, and suggested next step (e.g. open a PR).
+Reply concisely: verdict, links to `report.html` and `report.md`, decisions that were asked vs. derived, open findings, and suggested next step (e.g. open a PR).
+
+### 11. Open the HTML report (last action)
+As the very last action before finishing, open `docs/tickets/<id>/report.html` in the VS Code integrated browser with
+`openBrowserPage` (`file:///<absolute repo path>/docs/tickets/<id>/report.html`). If browser tools are unavailable, use
+`open` (macOS) / `xdg-open` (Linux) / `start ""` (Windows). Do not run any other step after this.
 
 ## Done when
 - [ ] Every acceptance criterion in `requirements.json` has status Passed or Passed with issues in the report
 - [ ] `npm run test:e2e` is green (or only pre-existing failures remain, listed in the report)
 - [ ] No open critical/high findings
-- [ ] `report.md` regenerated after the last change and committed
+- [ ] Every ticket scenario has screenshot proof in `report.html` that shows the change inside the viewport
+- [ ] `report.md` and `report.html` regenerated after the last change and committed
+- [ ] `report.html` opened for the user as the final action

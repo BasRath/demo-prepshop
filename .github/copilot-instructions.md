@@ -20,8 +20,10 @@ The site has **no runtime dependencies**; `package.json` only holds dev dependen
 - End-to-end tests are Gherkin features in `tests/e2e/features/` executed by playwright-bdd: `npm run test:e2e`.
   - `baseline/` covers existing shop behaviour; `tickets/` holds one feature file per ticket.
   - Step definitions live in `tests/e2e/steps/`; reuse `shop.steps.js` before adding new steps.
+  - Visual `Then` steps call `captureProof` (`tests/e2e/support/proof.js`) so every scenario has screenshot proof that
+    shows the verified change inside the viewport.
 - Exploratory testing uses `playwright-cli`.
-- Per-ticket artifacts (ticket snapshot, requirements, exploratory log, screenshots, report) live in `docs/tickets/<id>/`.
+- Per-ticket artifacts (ticket snapshot, requirements, exploratory log, screenshots, proof, `report.md` / `report.html`) live in `docs/tickets/<id>/`.
 
 ## Feature workflow
 

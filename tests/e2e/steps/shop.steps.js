@@ -4,6 +4,7 @@
 import { expect } from '@playwright/test';
 import { createBdd } from 'playwright-bdd';
 import { PRODUCTS, productId, STORAGE_KEY } from '../support/products.js';
+import { captureProof } from '../support/proof.js';
 
 const { Given, When, Then } = createBdd();
 
@@ -83,44 +84,57 @@ When('I submit my order', async ({ page }) => {
 // ---------- Then ----------
 
 Then('the basket icon shows {int} item(s)', async ({ page }, count) => {
-  await expect(page.locator('.basket-link [data-basket-count]')).toHaveText(String(count));
+  const badge = page.locator('.basket-link [data-basket-count]');
+  await expect(badge).toHaveText(String(count));
+  await captureProof(page, page.locator('.basket-link'), `basket icon shows ${count}`);
 });
 
 Then('I see {string} with quantity {int} for {string}', async ({ page }, name, quantity, lineTotal) => {
   const item = basketItem(page, name);
   await expect(item).toContainText(`Quantity: ${quantity} ×`);
   await expect(item).toContainText(lineTotal);
+  await captureProof(page, item, `${name} × ${quantity} = ${lineTotal}`);
 });
 
 Then('I no longer see {string} in my basket', async ({ page }, name) => {
   await expect(basketItem(page, name)).toHaveCount(0);
+  await captureProof(page, page.getByRole('main'), `${name} is no longer in the basket`);
 });
 
 Then('the basket total is {string}', async ({ page }, total) => {
-  await expect(page.getByText(`Total: ${total}`, { exact: true })).toBeVisible();
+  const totalText = page.getByText(`Total: ${total}`, { exact: true });
+  await expect(totalText).toBeVisible();
+  await captureProof(page, totalText, `basket total ${total}`);
 });
 
 Then('I see the message {string}', async ({ page }, message) => {
-  await expect(page.getByText(message, { exact: true })).toBeVisible();
+  const text = page.getByText(message, { exact: true });
+  await expect(text).toBeVisible();
+  await captureProof(page, text, `message "${message}"`);
 });
 
 Then('I cannot proceed to checkout', async ({ page }) => {
   const proceed = page.getByText('Proceed to Checkout', { exact: true });
   await expect(proceed).toHaveAttribute('aria-disabled', 'true');
   await expect(proceed).not.toHaveAttribute('href');
+  await captureProof(page, proceed, 'checkout is disabled');
 });
 
 Then('the order is not placed', async ({ page }) => {
-  await expect(page.getByRole('button', { name: 'Submit Order' })).toBeVisible();
+  const submit = page.getByRole('button', { name: 'Submit Order' });
+  await expect(submit).toBeVisible();
   await expect(page.getByText('Thank you for your order')).toHaveCount(0);
+  await captureProof(page, submit, 'order is not placed – still on the order form');
 });
 
 Then('I am asked to fill in {string}', async ({ page }, label) => {
   const field = page.getByLabel(label, { exact: true });
   await expect(field).toBeFocused();
   expect(await field.evaluate((input) => input.validity.valueMissing)).toBe(true);
+  await captureProof(page, field, `asked to fill in ${label}`);
 });
 
 Then('I do not see the order form', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Submit Order' })).toBeHidden();
+  await captureProof(page, page.getByRole('main'), 'order form is not shown');
 });

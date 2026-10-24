@@ -3,6 +3,7 @@
 // a <nav aria-label="Doomsday stories"> in the header with one link per card and a "Pause stories" button.
 import { expect } from '@playwright/test';
 import { test as base, createBdd } from 'playwright-bdd';
+import { captureProof } from '../support/proof.js';
 
 // Scenario-scoped memory for multi-step checks ("I read all stories" -> "the stories recommend").
 export const test = base.extend({
@@ -65,6 +66,8 @@ When('I read all stories', async ({ page, stories }) => {
 
 Then('I see {int} story card(s) in the header', async ({ page }, count) => {
   await expect(storyCards(page)).toHaveCount(count);
+  // Proof: the header, so the screenshot also shows "no cards" when count is 0.
+  await captureProof(page, page.locator('.site-header'), `${count} story card(s) in the header`);
 });
 
 Then('the story cards do not cover the logo or the basket', async ({ page }) => {
@@ -81,18 +84,23 @@ Then('the story cards do not cover the logo or the basket', async ({ page }) => 
       expect(overlaps, 'a story card overlaps the logo or basket link').toBe(false);
     }
   }
+  await captureProof(page, page.locator('.site-header'), 'story cards next to the logo and basket');
 });
 
 Then('the story cards show {string}, {string} and {string}', async ({ page }, a, b, c) => {
   await expect(storyCards(page)).toHaveText([new RegExp(a), new RegExp(b), new RegExp(c)]);
+  await captureProof(page, page.getByRole('navigation', { name: 'Doomsday stories' }), `story cards show ${a}, ${b} and ${c}`);
 });
 
 Then('the first story card is still {string}', async ({ page }, title) => {
   await expect(storyCards(page).first()).toContainText(title);
+  await captureProof(page, storyCards(page).first(), `first story card is still ${title}`);
 });
 
 Then('I am reading the story {string}', async ({ page }, title) => {
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText(title);
+  const heading = page.getByRole('heading', { level: 1 });
+  await expect(heading).toHaveText(title);
+  await captureProof(page, heading, `reading the story ${title}`);
 });
 
 Then('I have read {int} stories', async ({ stories }, count) => {
