@@ -3,6 +3,16 @@ import { defineBddConfig } from 'playwright-bdd';
 
 const PORT = Number(process.env.PORT) || 8000;
 
+// Keep local readiness checks off corporate proxies without losing existing exclusions.
+// Set both spellings because proxy clients may prefer the lowercase variable.
+const noProxy = [...new Set([
+  ...(process.env.NO_PROXY || '').split(','),
+  ...(process.env.no_proxy || '').split(','),
+  'localhost', '127.0.0.1', '::1', '[::1]'
+].map((host) => host.trim()).filter(Boolean))].join(',');
+process.env.NO_PROXY = noProxy;
+process.env.no_proxy = noProxy;
+
 const testDir = defineBddConfig({
   features: 'tests/e2e/features/**/*.feature',
   steps: 'tests/e2e/steps/**/*.js',

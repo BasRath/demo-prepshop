@@ -80,6 +80,26 @@ Then open <http://localhost:8000> (or the URL printed by `serve`).
 End-to-end tests are written in Gherkin (Given/When/Then) so non-technical testers can read
 them, and run with [Playwright](https://playwright.dev) via [playwright-bdd](https://github.com/vitalets/playwright-bdd).
 
+If your network requires a proxy, ask your IT team for the proxy URL and any bypass entries.
+Replace the placeholders below before running these commands in PowerShell to install
+dependencies. These settings apply to the current terminal session:
+
+```powershell
+$proxy = 'http://<proxy-host>:<proxy-port>'
+$env:HTTP_PROXY = $proxy
+$env:HTTPS_PROXY = $proxy
+$env:http_proxy = $proxy
+$env:https_proxy = $proxy
+
+$noProxy = '<organization-specific-bypass-entries>,localhost,127.0.0.1,::1,[::1]'
+$env:NO_PROXY = $noProxy
+$env:no_proxy = $noProxy
+```
+
+Keep organization-specific values in your local environment, not in this repository. Keep the
+loopback entries so local Playwright server checks bypass the proxy. Skip proxy setup on networks
+that do not require one.
+
 ```bash
 npm ci                              # once
 npx playwright install chromium     # once
@@ -90,6 +110,9 @@ npm run test:e2e:ticket -- @ticket-5   # only the scenarios tagged @ticket-5
 Results are written to `test-results/e2e-results.json`. Every visual `Then` step attaches a screenshot
 (`proof: …`) of the verified element, scrolled into view and outlined; the step fails if that element is not
 visible in the viewport.
+
+The Playwright configuration automatically adds loopback addresses to `NO_PROXY` / `no_proxy`,
+preserving existing exclusions so local server readiness checks work behind a corporate proxy.
 
 ## Developing a feature from a ticket
 
